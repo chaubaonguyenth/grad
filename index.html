@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Thiệp mời tốt nghiệp - Châu iu</title>
+<title>Thiệp mời tốt nghiệp</title>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Pacifico&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#fff3e4;--card:#ffffff;--pink:#ff8fb1;--mint:#7fdcc0;--sun:#ffd36b;--sky:#9ed8ff;--ink:#5a3e5c;--soft:#8c6f8e;color-scheme:light}
@@ -13,12 +13,16 @@
 html,body{height:100%;overflow:hidden}
 body{font-family:'Baloo 2','Trebuchet MS',system-ui,sans-serif;background:var(--bg);color:var(--ink);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 .script{font-family:'Pacifico','Brush Script MT',cursive;font-weight:400}
+
+/* nền icon bay */
 #bg{position:fixed;inset:0;overflow:hidden;pointer-events:none}
 #bg span{position:absolute;bottom:-60px;animation:up linear infinite;opacity:.8}
 @keyframes up{to{transform:translateY(-115vh) rotate(40deg)}}
+
+/* các trang */
 #stage{position:relative;height:100%;overflow:hidden}
 .pg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px 20px 80px;transition:transform .6s cubic-bezier(.7,0,.2,1),opacity .6s;overflow-y:auto}
-.box{width:100%;max-width:420px;background:var(--card);border-radius:36px;padding:30px 24px;text-align:center;box-shadow:0 10px 0 var(--pink),0 24px 40px rgba(90,62,92,.18);border:4px solid var(--ink);position:relative;margin:auto}
+.box{width:100%;max-width:420px;background-color:var(--card);background-image:radial-gradient(rgba(255,143,177,.2) 2px,transparent 2.5px);background-size:22px 22px;border-radius:36px;padding:30px 24px;text-align:center;box-shadow:0 10px 0 var(--pink),0 24px 40px rgba(90,62,92,.18);border:4px solid var(--ink);position:relative;margin:auto}
 .box.b2{box-shadow:0 10px 0 var(--mint),0 24px 40px rgba(90,62,92,.18)}
 .box.b3{box-shadow:0 10px 0 var(--sun),0 24px 40px rgba(90,62,92,.18)}
 .box.b4{box-shadow:0 10px 0 var(--sky),0 24px 40px rgba(90,62,92,.18)}
@@ -28,20 +32,62 @@ h2{font-size:24px;font-weight:800;margin:10px 0 4px}
 p{color:var(--soft);font-size:17px;line-height:1.5;margin:8px 0}
 .hl{color:var(--pink)}
 .who{font-size:32px;color:var(--pink);margin:2px 0 10px}
-.name{font-size:44px;color:var(--pink);line-height:1.2;margin:6px 0}
+.wavy{text-decoration:underline wavy var(--sun) 3px;text-underline-offset:7px}
+.deco{position:absolute;font-size:34px;animation:bob 3s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px) rotate(3deg)}}
+
+/* nút */
 .btn{font:inherit;font-weight:800;font-size:18px;cursor:pointer;border:3px solid var(--ink);background:var(--pink);color:#fff;padding:10px 26px;border-radius:99px;box-shadow:0 5px 0 var(--ink);text-decoration:none;display:inline-block;margin:8px 4px 6px;transition:transform .1s,box-shadow .1s}
 .btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--ink)}
 .btn.g{background:var(--mint);color:var(--ink)}
-.mascot{width:150px;height:150px;animation:bob 2.4s ease-in-out infinite}
-@keyframes bob{50%{transform:translateY(-10px) rotate(3deg)}}
-.cal{width:170px;margin:12px auto;border:4px solid var(--ink);border-radius:22px;overflow:hidden;background:#fff;color:var(--ink);transform:rotate(-3deg)}
-.cal .top{background:var(--pink);color:#fff;font-weight:800;padding:4px;font-size:18px;letter-spacing:2px}
-.cal .day{font-size:84px;font-weight:800;line-height:1;padding:6px 0 0}
-.cal .dow{font-weight:700;padding-bottom:8px;font-size:18px}
+
+/* trang 1: ảnh polaroid */
+.polaroid{width:190px;background:#fff;padding:10px 10px 6px;border:3px solid var(--ink);border-radius:8px;margin:6px auto 14px;transform:rotate(-4deg);box-shadow:0 6px 0 rgba(90,62,92,.25);position:relative;animation:bob 3s ease-in-out infinite}
+.polaroid img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:4px;background:var(--bg)}
+.polaroid .mascot{display:none;width:100%;height:auto;background:var(--bg);border-radius:4px}
+.polaroid.nophoto img{display:none}
+.polaroid.nophoto .mascot{display:block}
+.polaroid .cap{color:#5a3e5c;font-size:18px;padding-top:4px}
+.tape{position:absolute;top:-14px;left:50%;width:70px;height:24px;margin-left:-35px;background:rgba(255,211,107,.85);transform:rotate(3deg);border:2px dashed rgba(90,62,92,.3)}
+
+/* trang 2 */
+.ribbon{display:inline-block;background:var(--pink);color:#fff;font-weight:800;padding:4px 24px;border-radius:8px;border:3px solid var(--ink);box-shadow:0 4px 0 var(--ink);transform:rotate(-2deg);outline:2px dashed rgba(255,255,255,.85);outline-offset:-7px;letter-spacing:1px}
+.sticky{position:relative;background:#fff8bf;color:#5a3e5c;border:3px solid var(--ink);border-radius:6px 6px 24px 6px;padding:20px 16px 14px;margin:20px 6px 12px;transform:rotate(1.5deg);box-shadow:5px 5px 0 var(--mint);font-size:19px;line-height:1.45;font-weight:600}
+.sticky b{color:#ff5d93}
+.stickers{display:flex;justify-content:center;gap:10px;margin:14px 0 6px}
+.stickers span{width:46px;height:46px;border-radius:50%;border:3px solid var(--ink);display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 3px 0 var(--ink);animation:bob 2s ease-in-out infinite}
+.stickers span:nth-child(1){background:var(--pink)}
+.stickers span:nth-child(2){background:var(--mint);animation-delay:-.5s}
+.stickers span:nth-child(3){background:var(--sun);animation-delay:-1s}
+.stickers span:nth-child(4){background:var(--sky);animation-delay:-1.5s}
+
+/* trang 3: lịch */
+.cal{position:relative;width:100%;max-width:300px;margin:22px auto 10px;border:4px solid var(--ink);border-radius:22px;background:#fff;color:#5a3e5c;transform:rotate(-2deg);box-shadow:6px 6px 0 var(--sun)}
+.cal .top{background:var(--pink);color:#fff;font-weight:800;padding:12px 4px 6px;font-size:20px;letter-spacing:2px;border-radius:17px 17px 0 0;background-image:radial-gradient(rgba(255,255,255,.35) 2px,transparent 2.5px);background-size:14px 14px}
+.cal .ring{position:absolute;top:-16px;width:14px;height:30px;border-radius:9px;background:var(--sky);border:3px solid var(--ink)}
+.cal .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;padding:10px 10px 14px;font-weight:700;font-size:15px}
+.cal .grid b{color:var(--pink);font-size:13px}
+.cal .grid i{font-style:normal;padding:3px 0;border-radius:50%}
+.cal .grid i.me{background:var(--pink);color:#fff;font-weight:800;border:3px solid var(--ink);transform:scale(1.35);animation:pulse 1.2s ease-in-out infinite;position:relative;z-index:2}
+@keyframes pulse{50%{transform:scale(1.6) rotate(-6deg)}}
+.stk{position:absolute;font-size:34px}
+.s1{right:-16px;bottom:-14px;transform:rotate(14deg)}
+.s2{left:-16px;bottom:30px;transform:rotate(-14deg)}
 .count{display:inline-block;background:var(--mint);color:var(--ink);font-weight:800;border:3px solid var(--ink);border-radius:16px;padding:4px 16px;margin-top:6px}
+
+/* trang 4: địa điểm */
 .pin{font-size:64px;animation:bob 2s ease-in-out infinite;display:inline-block}
 .addr{background:var(--bg);border-radius:18px;padding:10px 14px;margin:10px 0;font-size:15px}
-.deco{position:absolute;font-size:34px;animation:bob 3s ease-in-out infinite}
+
+/* trang 5: lời nhắn */
+.note{background:var(--bg);border:3px dashed var(--pink);border-radius:22px;padding:14px;margin:12px 0}
+.note h2{font-size:20px;margin:0 0 8px}
+.note input,.note textarea{display:block;width:100%;border:3px solid var(--ink);border-radius:14px;padding:8px 12px;font:inherit;font-size:16px;background:var(--card);color:var(--ink);margin-bottom:8px}
+.note textarea{height:90px;resize:none}
+.note .btn{margin:4px auto}
+#st{font-weight:700;font-size:15px;color:var(--soft)}
+
+/* điều hướng */
 #nav{position:fixed;left:0;right:0;bottom:calc(14px + env(safe-area-inset-bottom,0px));display:none;align-items:center;justify-content:center;gap:14px;z-index:5}
 #nav button{width:44px;height:44px;border-radius:50%;border:3px solid var(--ink);background:var(--sun);font-size:20px;font-weight:800;color:var(--ink);cursor:pointer;box-shadow:0 4px 0 var(--ink)}
 #dots{display:flex;gap:8px}
@@ -50,6 +96,8 @@ p{color:var(--soft);font-size:17px;line-height:1.5;margin:8px 0}
 #mute{position:fixed;right:12px;top:calc(12px + env(safe-area-inset-top,0px));z-index:6;border:3px solid var(--ink);background:var(--card);color:var(--ink);border-radius:99px;font:inherit;font-weight:700;padding:2px 14px;cursor:pointer;display:none}
 .conf{position:fixed;top:-20px;width:10px;height:14px;z-index:9;pointer-events:none;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+/* tạo link khách (?tao=1) */
 #gen textarea{width:100%;height:110px;border:3px solid var(--ink);border-radius:16px;padding:10px;font:inherit;background:var(--bg);color:var(--ink);margin:8px 0}
 #out{font-size:12px;text-align:left;word-break:break-all;color:var(--soft)}
 #out div{padding:6px 0;border-bottom:2px dashed var(--pink)}
@@ -60,51 +108,68 @@ p{color:var(--soft);font-size:17px;line-height:1.5;margin:8px 0}
 <button id="mute">🔊 Nhạc</button>
 
 <main id="stage">
-  <!-- Trang 1: bìa -->
+
+  <!-- TRANG 1: BÌA (ảnh: đặt file anh.jpg cạnh index.html) -->
   <section class="pg">
     <div class="box">
-      <span class="deco" style="left:-8px;top:-14px">⭐</span><span class="deco" style="right:-6px;top:30px;animation-delay:-1s">🎈</span>
-      <svg class="mascot" viewBox="0 0 150 150" aria-hidden="true">
-        <ellipse cx="75" cy="88" rx="48" ry="46" fill="#ffd9b8" stroke="#5a3e5c" stroke-width="4"/>
-        <polygon points="75,14 18,40 75,64 132,40" fill="#5a3e5c"/>
-        <path d="M45 55v18q30 16 60 0V55q-30 14-60 0z" fill="#5a3e5c"/>
-        <path d="M122 42v34" stroke="#ffd36b" stroke-width="4"/><circle cx="122" cy="80" r="6" fill="#ffd36b"/>
-        <circle cx="56" cy="92" r="6" fill="#5a3e5c"/><circle cx="94" cy="92" r="6" fill="#5a3e5c"/>
-        <circle cx="58" cy="90" r="2" fill="#fff"/><circle cx="96" cy="90" r="2" fill="#fff"/>
-        <ellipse cx="42" cy="106" rx="9" ry="6" fill="#ff8fb1" opacity=".7"/><ellipse cx="108" cy="106" rx="9" ry="6" fill="#ff8fb1" opacity=".7"/>
-        <path d="M63 106q12 14 24 0" fill="none" stroke="#5a3e5c" stroke-width="4" stroke-linecap="round"/>
-      </svg>
+      <span class="deco" style="left:-8px;top:-14px">⭐</span>
+      <span class="deco" style="right:-6px;top:30px;animation-delay:-1s">🎈</span>
+      <div class="polaroid">
+        <span class="tape"></span>
+        <img src="anh.jpg" alt="Ảnh tốt nghiệp" onerror="this.parentNode.classList.add('nophoto')">
+        <svg class="mascot" viewBox="0 0 150 150" aria-hidden="true">
+          <ellipse cx="75" cy="88" rx="48" ry="46" fill="#ffd9b8" stroke="#5a3e5c" stroke-width="4"/>
+          <polygon points="75,14 18,40 75,64 132,40" fill="#5a3e5c"/>
+          <path d="M45 55v18q30 16 60 0V55q-30 14-60 0z" fill="#5a3e5c"/>
+          <path d="M122 42v34" stroke="#ffd36b" stroke-width="4"/><circle cx="122" cy="80" r="6" fill="#ffd36b"/>
+          <circle cx="56" cy="92" r="6" fill="#5a3e5c"/><circle cx="94" cy="92" r="6" fill="#5a3e5c"/>
+          <circle cx="58" cy="90" r="2" fill="#fff"/><circle cx="96" cy="90" r="2" fill="#fff"/>
+          <ellipse cx="42" cy="106" rx="9" ry="6" fill="#ff8fb1" opacity=".7"/><ellipse cx="108" cy="106" rx="9" ry="6" fill="#ff8fb1" opacity=".7"/>
+          <path d="M63 106q12 14 24 0" fill="none" stroke="#5a3e5c" stroke-width="4" stroke-linecap="round"/>
+        </svg>
+        <div class="cap script">Nguyễn Châu 🎓</div>
+      </div>
       <p style="margin:0">Thiệp mời dành riêng cho</p>
       <div class="who script" id="g1">Bạn</div>
       <button class="btn" id="open">Mở thiệp 💌</button>
     </div>
   </section>
 
-  <!-- Trang 2: lời mời -->
+  <!-- TRANG 2: LỜI MỜI -->
   <section class="pg">
     <div class="box b2">
       <span class="deco" style="right:-6px;top:-16px">🌸</span>
-      <span class="tag">TIN VUI 🎉</span>
-      <h1>Hú hú! <span class="hl">Châu</span> tốt nghiệp rồi nè!</h1>
-      <p>Gửi <b id="g2">bạn</b> thân mến,</p>
-      <p>Sau bao đêm thức khuya, deadline và cà phê, mình cũng đã đến ngày tốt nghiệp. Mình muốn có bạn ở đó để cùng chụp ảnh và cười thật tươi!</p>
-      <div class="name script">Nguyễn Châu</div>
-      <p>Vuốt sang để xem thời gian & địa điểm nhé 👉</p>
+      <span class="deco" style="left:-10px;top:30px;animation-delay:-1s">🎀</span>
+      <span class="deco" style="right:-10px;bottom:70px;animation-delay:-2s">✨</span>
+      <span class="ribbon">TIN VUI 🎉</span>
+      <h1>Ngày này cũng đã tới <span class="hl wavy">gòiiiiii</span> 🥹☕</h1>
+      <div class="sticky"><span class="tape"></span>Ngày <b>Chouiu</b> đã chính thức out khỏi <b>UIT</b>....</div>
+      <div class="stickers"><span>🎓</span><span>📸</span><span>🎉</span><span>💐</span></div>
+      <p>Gửi <b id="g2">bạn</b> iu 💕 qua chung vui với Chouiu nha!</p>
+      <p>Vuốt sang xem lịch hẹn nè 👉🎈</p>
     </div>
   </section>
 
-  <!-- Trang 3: ngày -->
+  <!-- TRANG 3: LỊCH -->
   <section class="pg">
     <div class="box b3">
-      <span class="deco" style="left:-8px;top:-14px">☁️</span>
+      <span class="deco" style="left:-10px;top:-16px">☁️</span>
+      <span class="deco" style="right:-8px;top:40px;animation-delay:-1s">💖</span>
+      <span class="deco" style="left:-8px;bottom:60px;animation-delay:-2s">⭐</span>
       <span class="tag">LỊCH HẸN 📅</span>
-      <div class="cal"><div class="top">THÁNG 11</div><div class="day">28</div><div class="dow">Thứ Bảy · 2026</div></div>
+      <div class="cal">
+        <span class="ring" style="left:22%"></span><span class="ring" style="right:22%"></span>
+        <div class="top">THÁNG 11 · 2026</div>
+        <div class="grid" id="grid"></div>
+        <span class="stk s1">🎓</span><span class="stk s2">🎉</span>
+      </div>
+      <h2>Thứ Bảy, 28/11/2026</h2>
       <p>Nhớ đánh dấu lịch giúp mình nha!</p>
       <div class="count" id="cd">...</div>
     </div>
   </section>
 
-  <!-- Trang 4: địa điểm -->
+  <!-- TRANG 4: ĐỊA ĐIỂM -->
   <section class="pg">
     <div class="box b4">
       <span class="deco" style="right:-6px;top:-14px">⭐</span>
@@ -116,20 +181,28 @@ p{color:var(--soft);font-size:17px;line-height:1.5;margin:8px 0}
     </div>
   </section>
 
-  <!-- Trang 5: liên hệ -->
+  <!-- TRANG 5: LIÊN HỆ + LỜI NHẮN -->
   <section class="pg">
     <div class="box">
-      <span class="deco" style="left:-8px;top:-14px">🎈</span><span class="deco" style="right:-6px;bottom:30px;animation-delay:-1.5s">🌸</span>
+      <span class="deco" style="left:-8px;top:-14px">🎈</span>
+      <span class="deco" style="right:-6px;bottom:30px;animation-delay:-1.5s">🌸</span>
       <span class="tag">HẸN GẶP BẠN 💖</span>
       <h1>Nhất định phải đến <span class="hl">nha!</span></h1>
       <p>Bạn đi được hay không, nhắn mình một tiếng để mình chuẩn bị chỗ cho bạn nè.</p>
       <a class="btn" href="tel:0935027649">📞 0935 027 649</a>
       <p style="font-size:15px">Sự hiện diện của bạn là món quà ý nghĩa nhất 🎁</p>
+      <div class="note">
+        <h2>💌 Gửi lời nhắn</h2>
+        <input id="nm" placeholder="Tên của bạn" maxlength="60">
+        <textarea id="msg" placeholder="Viết lời chúc / lời nhắn ở đây nha..." maxlength="500"></textarea>
+        <button class="btn" id="send">Gửi lời nhắn 💌</button>
+        <div id="st"></div>
+      </div>
       <button class="btn g" id="yay">Mình sẽ đến! 🎉</button>
     </div>
   </section>
 
-  <!-- Tạo link khách (thêm ?tao=1) -->
+  <!-- TẠO LINK KHÁCH (mở link thiệp kèm ?tao=1) -->
   <section class="pg" id="gen" style="display:none">
     <div class="box">
       <h2>Tạo link cho từng khách</h2>
@@ -138,28 +211,43 @@ p{color:var(--soft);font-size:17px;line-height:1.5;margin:8px 0}
       <div id="out"></div>
     </div>
   </section>
+
 </main>
 
 <div id="nav"><button id="prev">‹</button><div id="dots"></div><button id="next">›</button></div>
 
 <script>
+/* ================= CÀI ĐẶT (sửa ở đây) ================= */
+var NOTE_ENDPOINT = '';        // Dán link Formspree để nhận lời nhắn qua email, ví dụ 'https://formspree.io/f/abcdwxyz'. Để trống = mở tin nhắn SMS.
+var PHONE = '0935027649';      // Số nhận SMS khi NOTE_ENDPOINT để trống
+var MUSIC_FILE = 'nhac.mp3';   // File nhạc đặt cạnh index.html (không có file thì dùng nhạc hộp)
+var CHORUS_START = 0;          // Giây bắt đầu đoạn nhạc muốn phát
+var CHORUS_END = 0;            // Giây kết thúc (0 = phát hết bài rồi quay lại CHORUS_START)
+/* ======================================================== */
+
 (function(){
   var q=new URLSearchParams(location.search);
   var name=(q.get('name')||q.get('to')||'').trim();
   document.getElementById('g1').textContent=name||'Bạn';
   document.getElementById('g2').textContent=name||'bạn';
-  document.title='Thiệp mời gửi '+(name||'bạn')+' - Nguyễn Châu';
+  document.title='Thiệp mời gửi '+(name||'bạn');
 
-  // nền: icon bay
+  // nền icon bay
   var bg=document.getElementById('bg'),em=['⭐','☁️','🎈','🌸','✨','🎓','💖'];
   for(var i=0;i<16;i++){var s=document.createElement('span');s.textContent=em[i%em.length];
     s.style.cssText='left:'+Math.random()*100+'%;font-size:'+(16+Math.random()*22)+'px;animation-duration:'+(12+Math.random()*14)+'s;animation-delay:'+(-Math.random()*20)+'s';bg.appendChild(s);}
 
   // đếm ngược
-  var cd=document.getElementById('cd'),now=new Date(),t=new Date(2026,10,28),d=Math.ceil((t-now)/864e5);
-  cd.textContent=d>0?'Còn '+d+' ngày nữa thôi! ⏳':(d===0?'Chính là hôm nay! 🎉':'Cảm ơn bạn đã đến 💖');
+  var cd=document.getElementById('cd'),dleft=Math.ceil((new Date(2026,10,28)-new Date())/864e5);
+  cd.textContent=dleft>0?'Còn '+dleft+' ngày nữa thôi! ⏳':(dleft===0?'Chính là hôm nay! 🎉':'Cảm ơn bạn đã đến 💖');
 
-  // các trang
+  // lịch tháng 11/2026 (1/11 là Chủ nhật, tuần bắt đầu từ T2)
+  var gr=document.getElementById('grid');
+  ['T2','T3','T4','T5','T6','T7','CN'].forEach(function(x){var b=document.createElement('b');b.textContent=x;gr.appendChild(b)});
+  for(var k=0;k<6;k++)gr.appendChild(document.createElement('i'));
+  for(var dd=1;dd<=30;dd++){var ce=document.createElement('i');ce.textContent=dd;if(dd===28)ce.className='me';gr.appendChild(ce)}
+
+  // chuyển trang
   var pgs=[].slice.call(document.querySelectorAll('.pg')).filter(function(p){return p.id!=='gen'});
   var cur=0,dots=document.getElementById('dots'),nav=document.getElementById('nav');
   pgs.forEach(function(){dots.appendChild(document.createElement('i'))});
@@ -170,7 +258,6 @@ p{color:var(--soft);font-size:17px;line-height:1.5;margin:8px 0}
     if(cur===pgs.length-1)confetti(30);
   }
   go(0);
-  nav.style.display='none';
   document.getElementById('prev').onclick=function(){go(cur-1)};
   document.getElementById('next').onclick=function(){go(cur+1)};
   document.addEventListener('keydown',function(e){if(nav.style.display==='flex'){if(e.key==='ArrowRight')go(cur+1);if(e.key==='ArrowLeft')go(cur-1)}});
@@ -178,6 +265,7 @@ p{color:var(--soft);font-size:17px;line-height:1.5;margin:8px 0}
   document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
   document.addEventListener('touchend',function(e){if(sx===null||nav.style.display!=='flex')return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>60)go(cur+(dx<0?1:-1));sx=null});
 
+  // pháo giấy
   function confetti(n){
     var c=['#ff8fb1','#7fdcc0','#ffd36b','#9ed8ff'];
     for(var i=0;i<n;i++){var e=document.createElement('i');e.className='conf';
@@ -186,42 +274,71 @@ p{color:var(--soft);font-size:17px;line-height:1.5;margin:8px 0}
   }
   document.getElementById('yay').onclick=function(){confetti(80)};
 
-  // nhạc hộp (tạo bằng Web Audio, không cần file)
-  var ctx,master,timer,next=0,bar=0,on=false,mute=document.getElementById('mute');
+  // lời nhắn
+  var nm=document.getElementById('nm'),mg=document.getElementById('msg'),st=document.getElementById('st');
+  nm.value=name;
+  document.getElementById('send').onclick=function(){
+    var n=nm.value.trim()||'Ẩn danh',m=mg.value.trim();
+    if(!m){st.textContent='Bạn viết gì đó trước nha 😊';return;}
+    if(!NOTE_ENDPOINT){location.href='sms:'+PHONE+'?&body='+encodeURIComponent('['+n+'] '+m);st.textContent='Đang mở tin nhắn để gửi 💌';return;}
+    st.textContent='Đang gửi...';
+    var fd=new FormData();fd.append('name',n);fd.append('message',m);
+    fetch(NOTE_ENDPOINT,{method:'POST',body:fd,headers:{Accept:'application/json'}}).then(function(r){
+      if(!r.ok)throw 0;st.textContent='Đã gửi rồi, cảm ơn bạn nhiều 💖';mg.value='';confetti(50);
+    }).catch(function(){st.textContent='Gửi chưa được, bạn thử lại nhé 🥺'});
+  };
+
+  // nhạc: ưu tiên file MUSIC_FILE, không có thì dùng nhạc hộp tạo bằng code
+  var ctx,master,timer,next=0,bar=0,on=false,au=null,fell=false,mute=document.getElementById('mute');
   var mel=[[659.25,783.99,880,783.99,659.25,587.33,523.25,0],[587.33,659.25,783.99,659.25,587.33,523.25,440,0],[523.25,659.25,783.99,880,783.99,659.25,783.99,0],[880,783.99,659.25,587.33,523.25,587.33,523.25,0]];
   var chd=[[130.81,[261.63,329.63,392]],[110,[220,261.63,329.63]],[87.31,[174.61,220,261.63]],[98,[196,246.94,293.66]]];
+  var beat=60/108/2;
   function note(f,t,d,type,v){var o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.value=f;
     g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.015);g.gain.exponentialRampToValueAtTime(.0001,t+d);
     o.connect(g);g.connect(master);o.start(t);o.stop(t+d+.05);}
-  var beat=60/108/2;
   function sched(){
     while(next<ctx.currentTime+1.2){
       var b=bar%4,c=chd[b];
       for(var i=0;i<8;i++){
         var t=next+i*beat,m=mel[b][i];
-        if(m)note(m,t,beat*2.6,'sine',.2);
-        if(m)note(m*2,t,beat*1.2,'triangle',.04);
+        if(m){note(m,t,beat*2.6,'sine',.2);note(m*2,t,beat*1.2,'triangle',.04);}
         note(c[1][[0,1,2,1,2,1,2,1][i]],t,beat*1.6,'triangle',.07);
         if(i===0||i===4)note(c[0],t,beat*3.5,'sine',.22);
       }
       next+=beat*8;bar++;
     }
   }
-  function start(){
+  function synth(){
     try{var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;
       ctx=new AC();master=ctx.createGain();master.gain.value=.55;master.connect(ctx.destination);
       next=ctx.currentTime+.1;timer=setInterval(sched,300);sched();on=true;}catch(e){}
   }
-  mute.onclick=function(){if(!ctx)return;if(on){ctx.suspend();on=false;mute.textContent='🔇 Nhạc'}else{ctx.resume();on=true;mute.textContent='🔊 Nhạc'}};
+  function fallback(){if(!fell){fell=true;synth()}}
+  function start(){
+    try{
+      au=new Audio(MUSIC_FILE);au.preload='auto';
+      au.addEventListener('error',fallback);
+      au.addEventListener('loadedmetadata',function(){au.currentTime=CHORUS_START});
+      au.addEventListener('timeupdate',function(){if(CHORUS_END&&au.currentTime>=CHORUS_END)au.currentTime=CHORUS_START});
+      au.addEventListener('ended',function(){au.currentTime=CHORUS_START;au.play()});
+      var pr=au.play();
+      if(pr&&pr.then)pr.then(function(){on=true}).catch(function(){});
+    }catch(e){fallback()}
+  }
+  mute.onclick=function(){
+    if(au&&!au.error){if(on){au.pause();on=false;mute.textContent='🔇 Nhạc'}else{au.play();on=true;mute.textContent='🔊 Nhạc'}return;}
+    if(!ctx)return;
+    if(on){ctx.suspend();on=false;mute.textContent='🔇 Nhạc'}else{ctx.resume();on=true;mute.textContent='🔊 Nhạc'}
+  };
 
   document.getElementById('open').onclick=function(){
     start();confetti(70);go(1);nav.style.display='flex';mute.style.display='block';
   };
 
-  // tạo link khách: thêm ?tao=1
+  // tạo link khách: mở link thiệp kèm ?tao=1
   if(q.get('tao')){
     pgs.forEach(function(p){p.style.display='none'});
-    var gen=document.getElementById('gen');gen.style.display='flex';
+    document.getElementById('gen').style.display='flex';
     document.getElementById('mk').onclick=function(){
       var base=location.origin+location.pathname,out=document.getElementById('out');out.textContent='';
       document.getElementById('names').value.split('\n').map(function(x){return x.trim()}).filter(Boolean).forEach(function(n){
