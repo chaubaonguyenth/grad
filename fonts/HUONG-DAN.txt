@@ -1,0 +1,13 @@
+PHÔNG CHỮ TIÊU ĐỀ "Bảo Châu's Graduation Ceremony"
+==================================================
+
+Hiện tiêu đề dùng phông Gluten (chữ bóng tròn, có dấu tiếng Việt, đổi được trong chon-font.html), mỗi chữ một màu pastel và có sao lấp lánh. Màu và ngôi sao được thêm bằng code nên đổi phông vẫn giữ nguyên.
+
+Muốn dùng file phông của riêng bạn:
+1. Đổi tên file phông thành: tieu-de.ttf  (hoặc tieu-de.otf / tieu-de.woff2).
+2. Đặt vào thư mục này (fonts) và tải lên GitHub cùng thư mục.
+3. Thiệp tự dùng phông đó thay cho phông mặc định.
+
+Chữ nào phông của bạn không có (ví dụ chữ có dấu tiếng Việt) sẽ tự dùng phông mặc định thay thế.
+Nếu phông chỉ có chữ thường, thêm "text-transform:lowercase;" vào luật ".gc" trong index.html.
+Lưu ý: các chữ có biểu tượng vương miện trong Canva là hình ảnh (element) chứ không phải file phông, nên không đặt vào đây được.
